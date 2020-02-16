@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    #message{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #message li{
+        padding: 5px 10px;
+    }
+
+    #message li:nth-child(odd) {
+        background: #eee;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="message-form">
+                <div class="col-sm-10">
+                    <input type="text" id="user-message" placeholder="Enter your message">
+                </div>
+                <div class="col-sm-2">
+                    <input class="btn btn-primary" type="submit" value="Send">
+                </div>
+            </form>
+            <ul id="message">
+                <!-- will use this to display message -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+    const socket = io('http://localhost:9000');
+    socket.on('messageFromServer', (dataFromServer) => {
+        console.log(dataFromServer);
+        socket.emit('messageToServer', {data: "Data from the client!"});
+    });
+
+    document.querySelector('#message-form').addEventListener('submit', (event) =>{
+        event.preventDefault();
+        const userMessage = document.querySelector('#user-message').value;
+        socket.emit('newMessgaeToServer', {text: userMessage})
+        console.log(userMessage);
+    });
+
+    socket.on('messageToClient', (msg) => {
+        document.querySelector('#message').innerHTML += `<li>${msg.text}</li>`
+    });
+    // socket.on('ping', () => {
+    //     console.log('Ping was received from the server');
+    // });
+
+    // socket.on('pong', (latency) => {
+    //     console.log(latency);
+    //     console.log('Pong was sent to the server');
+    // });
+</script>

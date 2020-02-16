@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="./style.css">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="message-form">
+                <div class="col-sm-10">
+                    <input type="text" id="user-message" placeholder="Enter your message">
+                </div>
+                <div class="col-sm-2">
+                    <input class="btn btn-primary" type="submit" value="Send">
+                </div>
+            </form>
+            <ul id="message">
+                <!-- will use this to display message -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="./script.js"></script>
