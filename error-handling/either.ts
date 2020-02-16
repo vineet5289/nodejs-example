@@ -1,3 +1,4 @@
+//https://medium.com/inato/expressive-error-handling-in-typescript-and-benefits-for-domain-driven-design-70726e061c86
 export type Either<L, A> = Left<L, A> | Right<L, A>;
 
 export class Left<L, A> {
