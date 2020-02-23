@@ -1,0 +1,18 @@
+{
+  "name": "knex-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "knex": "^0.20.10",
+    "mysql": "^2.18.1",
+    "prettyjson": "^1.2.1",
+    "treeize": "^2.1.2"
+  }
+}
